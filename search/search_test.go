@@ -2,8 +2,8 @@ package search
 
 import "testing"
 
-// TestSearchByKeyword ensures searching Github by keyword functions properly
-// TODO: Implement Real tests for Github API
+// TestSearchByKeyword ensures searching GitHub by keyword functions properly
+// TODO: Implement Real tests for GitHub API
 func TestSearchByKeyword(t *testing.T) {
 	repositoryList := SearchByKeyword([]string{"first", "second"})
 	if repositoryList[0] != "exampleRepo" {

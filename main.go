@@ -16,7 +16,7 @@ func main() {
 func init() {
 	rootCmd = &cobra.Command{
 		Use:   "forkutil",
-		Short: "Project Forking tool For Github",
+		Short: "Project Forking tool For GitHub",
 	}
 	rootCmd.AddCommand(search.SearchCmd)
 	rootCmd.AddCommand(docs.DocsCmd)

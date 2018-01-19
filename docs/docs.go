@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// DocsCmd represents the command used to get docs from a Github repository
+// DocsCmd represents the command used to get docs from a GitHub repository
 var DocsCmd = &cobra.Command{
 	Use:   "docs",
 	Short: "Read the documentation for a repository",
@@ -21,7 +21,7 @@ var DocsCmd = &cobra.Command{
 }
 
 // GetRepositoryReadme returns a repositories readme
-// TODO implement actual function using Github API
+// TODO implement actual function using GitHub API
 func GetRepositoryReadme(repository string) string {
 	return repository
 }
