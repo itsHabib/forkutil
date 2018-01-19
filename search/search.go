@@ -18,7 +18,7 @@ var SearchCmd = &cobra.Command{
 	},
 }
 
-// Searches Github repositories by keyword
+// SearchByKeyword searches Github repositories by keyword
 func SearchByKeyword(keywords []string) []string {
 	return []string{"exampleRepo"}
 }
