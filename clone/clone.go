@@ -1,9 +1,12 @@
 package clone
 
 import (
+	"fmt"
 	"log"
 
+	"github.com/itsHabib/forkutil/repo"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 // CloneCmd represents the command used clone a GitHub repository
@@ -14,14 +17,22 @@ var CloneCmd = &cobra.Command{
 		if len(args) <= 0 {
 			log.Fatalln("You must supply a repository to clone")
 		}
-		if err := CloneRepository(args[0], ref, create); err != nil {
+		if err := Repository(args[0], ref, create); err != nil {
 			log.Fatalln("error when cloning repository:", err)
 		}
 	},
 }
 
-// CloneRepository clones a GitHub repository
-func CloneRepository(repository, ref string, create bool) error {
+// Repository clones a GitHub repository
+func Repository(repository, ref string, create bool) error {
+	repo, err := repo.NewGHRepo(repository)
+	if err != nil {
+		return err
+	}
+	if err := repo.Clone(viper.GetString("location")); err != nil {
+		return err
+	}
+	fmt.Printf("Cloned repository to: %s\n", repo.RepoDir)
 	return nil
 }
 
