@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/itsHabib/forkutil/clone"
 	"github.com/itsHabib/forkutil/docs"
+	"github.com/itsHabib/forkutil/fork"
 	"github.com/itsHabib/forkutil/search"
 	"github.com/spf13/cobra"
 )
@@ -22,4 +23,5 @@ func init() {
 	rootCmd.AddCommand(search.SearchCmd)
 	rootCmd.AddCommand(docs.DocsCmd)
 	rootCmd.AddCommand(clone.CloneCmd)
+	rootCmd.AddCommand(fork.ForkCmd)
 }
