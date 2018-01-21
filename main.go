@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/itsHabib/forkutil/clone"
@@ -27,8 +28,10 @@ func init() {
 	rootCmd.AddCommand(docs.DocsCmd)
 	rootCmd.AddCommand(clone.CloneCmd)
 	rootCmd.AddCommand(fork.ForkCmd)
-	viper.SetDefault("location", os.Getenv("HOME"))
-	viper.SetConfigName("forkutil")
+	viper.SetConfigName("config")
 	viper.AddConfigPath(".")
-	viper.ReadInConfig()
+	if err := viper.ReadInConfig(); err != nil {
+		fmt.Println("No config file found")
+	}
+	viper.SetDefault("location", os.Getenv("HOME"))
 }
