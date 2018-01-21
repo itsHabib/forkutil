@@ -32,6 +32,9 @@ func Repository(repository, ref string, create bool) error {
 	if err := repo.Clone(viper.GetString("location")); err != nil {
 		return err
 	}
+	if err := repo.Checkout(ref, create); err != nil {
+		return err
+	}
 	fmt.Printf("Cloned repository to: %s\n", repo.RepoDir)
 	return nil
 }
@@ -42,7 +45,7 @@ var create bool
 
 // Initializes the CloneCmd with arguments it can take
 func init() {
-	CloneCmd.PersistentFlags().StringVar(&ref, "ref", "",
+	CloneCmd.PersistentFlags().StringVar(&ref, "ref", "master",
 		"specific reference to check out")
 	CloneCmd.PersistentFlags().BoolVar(&create, "create", false,
 		"create the reference if it does not exist")
