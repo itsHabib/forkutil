@@ -1,8 +1,8 @@
 package forkutil
 
 import (
-	"github.com/itsHabib/art"
 	"github.com/spf13/viper"
+	"github.com/itsHabib/art"
 )
 
 var api *art.API
@@ -15,6 +15,8 @@ func GitHubAPI() *art.API {
 		api.SetAuth(art.NewAuthToken(token))
 		api.AddResource("fork", GetForkResource())
 		api.AddResource("search", GetSearchResource())
+		api.AddResource("docs", GetReadmeResource())
+		api.AddResource("pullrequest", GetPullRequestResource())
 	}
 	return api
 }

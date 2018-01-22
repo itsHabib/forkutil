@@ -39,7 +39,7 @@ func GetRepositoryReadme(repository string) error {
 	return GitHubAPI().Call("docs", map[string]string{
 		"owner":   values[0],
 		"project": values[1],
-	})
+	}, nil)
 }
 
 func ReadmeSuccess(resp *http.Response, _ interface{}) error {
@@ -48,7 +48,7 @@ func ReadmeSuccess(resp *http.Response, _ interface{}) error {
 	if err != nil {
 		return err
 	}
-	respContent := ReadResponse{}
+	respContent := ReadmeResponse{}
 	json.Unmarshal(content, &respContent)
 	buff, err := base64.StdEncoding.DecodeString(respContent.Content)
 	if err != nil {
@@ -67,7 +67,7 @@ func ReademeDefaultRouter(resp *http.Response, _ interface{}) error {
 func GetReadmeResource() *art.RestResource {
 	router := art.NewRouter()
 	router.RegisterFunc(200, ReadmeSuccess)
-	router.DefaultRouter = ReadmeDefaultRouter
+	router.DefaultRouter = ReademeDefaultRouter
 	readmeResource := art.NewResource("/repos/{{.owner}}/{{.project}}/readme",
 		"GET", router)
 	return readmeResource

@@ -38,7 +38,7 @@ var SearchCmd = &cobra.Command{
 func SearchByKeyword(keywords []string) error {
 	return GitHubAPI().Call("search", map[string]string{
 		"query": strings.Join(keywords, "+"),
-	})
+	}, nil)
 }
 
 // SearchSuccess is the function to deal with successful searches from GH

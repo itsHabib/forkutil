@@ -17,7 +17,6 @@ type GHRepo struct {
 	project string
 	repo    *git.Repository
 }
-
 // NewGHRepo instantiates a new GHRepo struct
 func NewGHRepo(repository string) (*GHRepo, error) {
 	values := strings.Split(repository, "/")

@@ -37,6 +37,7 @@ var PullRequestCmd = &cobra.Command{
 	},
 }
 
+// CreatePullRequest creates a pull request
 func CreatePullRequest() error {
 	sourceValues := strings.Split(sourceRepo, ":")
 	if !(len(sourceValues) == 1 || len(sourceValues) == 2) {
@@ -83,10 +84,10 @@ func PullRequestDefaultRouter(resp *http.Response, _ interface{}) error {
 }
 
 // GetPullRequestResource returns a rest rource to create pull requests
-func GetPullRequestResource() *art.Resource {
+func GetPullRequestResource() *art.RestResource {
 	router := art.NewRouter()
 	router.RegisterFunc(201, PullRequestSuccess)
-	router.DefaultRouter = PullRequestRouter
+	router.DefaultRouter = PullRequestDefaultRouter
 	resource := art.NewResource("/repos/{{.owner}}/{{.project}}/pulls",
 		"POST", router)
 	return resource
