@@ -1,6 +1,6 @@
 # forkutil
 forkutil is a command line tool that is used to with help with different tasks that relate
-to GitHub. forkutil is able to search repositories by keyword and more, fork repositories, clone repositories, submit pull requests, and read readmes from repositories.
+to GitHub. forkutil is able to search, clone, and fork repositories, submit pull requests, and read readmes from a repository.
 
 ## Install 
 ```
@@ -17,7 +17,7 @@ go get github.com/itsHabib/forkutil
 determine where to clone the repository to. By default it is cloned to the 
 HOME env variable.
 `forkutil clone itsHabib/forkutil`
-5. Forking repositories also uses the config.yaml file for the personal access token
+5. The fork command uses the config.yaml to retreive the personal access token in order to fork repositories
 `forkutil fork itsHabib/art`
-6. Pull Request also uses the config.yaml file for the personal access token
+6. The pullrequest command also uses the config.yaml file for the personal access token
 `forkutil pullrequest -d itsHabib/google-home-sms:master -t 'my new pull request' -m 'message for pull request' -s itsHabib:mychanges`
