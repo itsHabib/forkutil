@@ -1,8 +1,0 @@
-package: github.com/itsHabib/forkutil
-import:
-- package: github.com/spf13/cobra
-  version: v0.0.1
-- package: gopkg.in/src-d/go-git.v4
-  version: v4.1.0
-- package: github.com/spf13/viper
-  version: v1.0.0
