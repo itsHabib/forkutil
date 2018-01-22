@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/itsHabib/forkutil"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"github.com/itsHabib/forkutil"
 )
 
 /// Root Command used to work with other sub commands
@@ -25,6 +25,7 @@ func init() {
 	rootCmd.AddCommand(forkutil.DocsCmd)
 	rootCmd.AddCommand(forkutil.CloneCmd)
 	rootCmd.AddCommand(forkutil.ForkCmd)
+	rootCmd.AddCommand(forkutil.PullRequestCmd)
 	viper.SetConfigName("config")
 	viper.AddConfigPath(".")
 	if err := viper.ReadInConfig(); err != nil {
