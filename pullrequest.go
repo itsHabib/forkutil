@@ -77,9 +77,16 @@ func PullRequestSuccess(resp *http.Response, _ interface{}) error {
 	return nil
 }
 
+// PullRequestDefaultRouter is the default router for pull request commands
+func PullRequestDefaultRouter(resp *http.Response, _ interface{}) error {
+	return fmt.Errorf("Status code %d", resp.StatusCode)
+}
+
+// GetPullRequestResource returns a rest rource to create pull requests
 func GetPullRequestResource() *art.Resource {
 	router := art.NewRouter()
 	router.RegisterFunc(201, PullRequestSuccess)
+	router.DefaultRouter = PullRequestRouter
 	resource := art.NewResource("/repos/{{.owner}}/{{.project}}/pulls",
 		"POST", router)
 	return resource
